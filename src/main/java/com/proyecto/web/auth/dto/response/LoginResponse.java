@@ -1,6 +1,6 @@
 package com.proyecto.web.auth.dto.response;
 
-import com.proyecto.web.model.User;
+import com.proyecto.web.domain.User;
 
 public record LoginResponse(
 

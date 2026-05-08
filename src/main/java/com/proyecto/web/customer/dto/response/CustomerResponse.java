@@ -1,6 +1,6 @@
 package com.proyecto.web.customer.dto.response;
 
-import com.proyecto.web.model.Customer;
+import com.proyecto.web.domain.Customer;
 
 public record CustomerResponse(
 

@@ -1,4 +1,4 @@
-package com.proyecto.web.model;
+package com.proyecto.web.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,17 +9,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Customer {
+public class Supplier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String code;
-    private String firstName;
-    private String lastName;
+    private String supplierName;
+    private Date dateLastOrder;
+    private SupplierStatus paymentStatus;
+    private String debt;
     private Boolean state;
 }
