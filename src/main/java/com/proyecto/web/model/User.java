@@ -21,5 +21,5 @@ public class User {
     private String password;
     private String firstName;
     private String role;
-    private Boolean active;
+    private Boolean state;
 }

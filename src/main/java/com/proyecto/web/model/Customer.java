@@ -21,5 +21,5 @@ public class Customer {
     private String code;
     private String firstName;
     private String lastName;
-    private Boolean active;
+    private Boolean state;
 }
