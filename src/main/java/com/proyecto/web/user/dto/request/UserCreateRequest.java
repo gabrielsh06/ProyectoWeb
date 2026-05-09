@@ -1,5 +1,6 @@
 package com.proyecto.web.user.dto.request;
 
+import com.proyecto.web.domain.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,4 +18,13 @@ public record UserCreateRequest(
         @NotBlank(message = "El rol no puede estar en blanco")
         String role
 ) {
+        public User toEntity() {
+                User user = new User();
+                user.setUsername(username);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setFirstName(firstName);
+                user.setRole(role);
+                return user;
+        }
 }
