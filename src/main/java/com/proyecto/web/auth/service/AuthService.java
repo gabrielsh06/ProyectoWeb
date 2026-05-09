@@ -4,6 +4,7 @@ import com.proyecto.web.auth.dto.request.LoginRequest;
 import com.proyecto.web.auth.dto.response.LoginResponse;
 import com.proyecto.web.auth.repository.AuthRepository;
 import com.proyecto.web.domain.User;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +17,8 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
-        User user = authRepository.findByUsernameAndPassword(loginRequest.username(), loginRequest.password())
-                .orElseThrow(() -> new RuntimeException("Username or password incorrect"));
-         return new LoginResponse(user);
+        return authRepository.findByUsernameAndPassword(loginRequest.username(), loginRequest.password())
+                .map(LoginResponse::new)
+                .orElseThrow(() -> new EntityNotFoundException("Username or password incorrect"));
     }
 }
