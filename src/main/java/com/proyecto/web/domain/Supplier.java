@@ -1,14 +1,12 @@
 package com.proyecto.web.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
@@ -24,7 +22,8 @@ public class Supplier {
     private Long id;
     private String supplierName;
     private LocalDate dateLastOrder;
+    @Enumerated(EnumType.STRING)
     private SupplierStatus paymentStatus;
-    private String debt;
+    private BigDecimal debt;
     private Boolean state;
 }

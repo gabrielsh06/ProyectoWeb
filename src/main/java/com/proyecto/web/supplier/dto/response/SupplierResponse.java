@@ -2,6 +2,7 @@ package com.proyecto.web.supplier.dto.response;
 
 import com.proyecto.web.domain.SupplierStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record SupplierResponse(
@@ -10,6 +11,6 @@ public record SupplierResponse(
         String supplierName,
         LocalDate dateLastOrder,
         SupplierStatus paymentStatus,
-        String debt
+        BigDecimal debt
 ) {
 }
