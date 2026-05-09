@@ -38,6 +38,7 @@ public class UserService {
 
         User user = userCreateRequest.toEntity();
         user.setState(true);
+
         return new  UserResponse(userRepository.save(user));
     }
 
@@ -51,12 +52,15 @@ public class UserService {
         user.setPassword(userUpdateRequest.password());
         user.setFirstName(userUpdateRequest.firstName());
         user.setRole(userUpdateRequest.role());
+
         return new UserResponse(userRepository.save(user));
     }
 
     public void deleteUser(Long id) {
         User user = userRepository.findById(id)
+                .filter(User::getState)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
         user.setState(false);
         userRepository.save(user);
     }
