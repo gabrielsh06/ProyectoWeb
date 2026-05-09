@@ -37,6 +37,7 @@ public class UserService {
     public UserResponse registerUser(UserCreateRequest userCreateRequest) {
 
         User user = userCreateRequest.toEntity();
+        user.setState(true);
         return new  UserResponse(userRepository.save(user));
     }
 
