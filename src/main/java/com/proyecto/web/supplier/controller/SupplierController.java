@@ -55,6 +55,6 @@ public class SupplierController {
     public ResponseEntity<Void> deleteSupplier(@PathVariable Long id) {
 
         supplierService.deleteSupplier(id);
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 }
