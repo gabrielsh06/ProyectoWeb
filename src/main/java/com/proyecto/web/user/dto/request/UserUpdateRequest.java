@@ -10,7 +10,7 @@ public record UserUpdateRequest(
         @NotBlank(message = "El correo no puede estar en blanco")
         @Email(message = "El correo debe estar bien escrito")
         String email,
-        @NotBlank(message = "La contraseña no peude estar en blanco")
+        @NotBlank(message = "La contraseña no puede estar en blanco")
         String password,
         @NotBlank(message = "El nombre no puede estar en blanco")
         String firstName,
