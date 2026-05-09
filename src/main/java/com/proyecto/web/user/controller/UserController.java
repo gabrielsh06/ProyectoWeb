@@ -30,7 +30,7 @@ public class UserController {
     public ResponseEntity<UserResponse> updateUser(@PathVariable Long id,
                                                    @Valid @RequestBody UserUpdateRequest userUpdateRequest) {
 
-        UserResponse userResponse = userService.updateUser(userUpdateRequest);
+        UserResponse userResponse = userService.updateUser(id, userUpdateRequest);
         return ResponseEntity.ok(userResponse);
     }
 

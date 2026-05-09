@@ -13,12 +13,12 @@ public class UserService {
         return null;
     }
 
-    public UserResponse updateUser(UserUpdateRequest userUpdateRequest) {
+    public UserResponse updateUser(Long id, UserUpdateRequest userUpdateRequest) {
 
         return null;
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(Long id) {
 
     }
 }
