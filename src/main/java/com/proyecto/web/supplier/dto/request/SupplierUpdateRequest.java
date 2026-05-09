@@ -14,7 +14,7 @@ public record SupplierUpdateRequest(
         String supplierName,
         @NotBlank(message = "La fecha no puede estar en blanco")
         @PastOrPresent
-        @JsonFormat(pattern = "yyyy-MM-dd")
+        @JsonFormat(pattern = "dd-MM-yyyy")
         LocalDate dateLastOrder,
         @NotBlank(message = "El estado no puede estar en blanco")
         SupplierStatus paymentStatus,
