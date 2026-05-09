@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -16,6 +18,20 @@ public class CustomerController {
 
     public  CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerResponse> getCustomer(@PathVariable Long id) {
+
+        CustomerResponse response = customerService.getCustomer(id);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerResponse>> getAllCustomers() {
+
+        List<CustomerResponse> response = customerService.getAllCustomers();
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping
@@ -32,7 +48,7 @@ public class CustomerController {
             @Valid @RequestBody CustomerUpdateRequest customerUpdateRequest) {
 
         CustomerResponse response = customerService.update(id, customerUpdateRequest);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(response);
     }
 
     @DeleteMapping("/{id}")
