@@ -1,4 +1,4 @@
-package com.proyecto.web.supplier.dto.response;
+package com.proyecto.web.product.dto.response;
 
 public record SupplierShortResponse(
         Long id,
