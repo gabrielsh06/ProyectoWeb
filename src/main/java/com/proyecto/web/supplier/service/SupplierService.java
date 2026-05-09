@@ -5,8 +5,20 @@ import com.proyecto.web.supplier.dto.request.SupplierUpdateRequest;
 import com.proyecto.web.supplier.dto.response.SupplierResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SupplierService {
+
+    public SupplierResponse getSupplier(Long id) {
+
+        return null;
+    }
+
+    public List<SupplierResponse> getAllSuppliers() {
+
+        return null;
+    }
 
     public SupplierResponse registerSupplier(SupplierCreateRequest supplierCreateRequest) {
 

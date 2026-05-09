@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController {
@@ -17,6 +19,20 @@ public class SupplierController {
 
     public SupplierController(SupplierService supplierService) {
         this.supplierService = supplierService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SupplierResponse> getSupplier(@PathVariable Long id) {
+
+        SupplierResponse response = supplierService.getSupplier(id);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<SupplierResponse>> getAllSuppliers() {
+
+        List<SupplierResponse> response = supplierService.getAllSuppliers();
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping()
@@ -38,6 +54,7 @@ public class SupplierController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteSupplier(@PathVariable Long id) {
 
+        supplierService.deleteSupplier(id);
         return ResponseEntity.notFound().build();
     }
 }
