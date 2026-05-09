@@ -13,13 +13,10 @@ public record SupplierUpdateRequest(
 
         @NotBlank(message = "El nombre no puede estar en blanco")
         String supplierName,
-        @NotBlank(message = "La fecha no puede estar en blanco")
         @PastOrPresent
-        @JsonFormat(pattern = "dd-MM-yyyy")
+        @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate dateLastOrder,
-        @NotBlank(message = "El estado no puede estar en blanco")
         SupplierStatus paymentStatus,
-        @NotBlank(message = "La deuda no puede estar en blanco")
         BigDecimal debt
 ) {
 }

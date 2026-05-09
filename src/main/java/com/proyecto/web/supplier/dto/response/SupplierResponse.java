@@ -1,5 +1,6 @@
 package com.proyecto.web.supplier.dto.response;
 
+import com.proyecto.web.domain.Supplier;
 import com.proyecto.web.domain.SupplierStatus;
 
 import java.math.BigDecimal;
@@ -13,4 +14,11 @@ public record SupplierResponse(
         SupplierStatus paymentStatus,
         BigDecimal debt
 ) {
+    public SupplierResponse (Supplier supplier) {
+        this(supplier.getId(),
+                supplier.getSupplierName(),
+                supplier.getDateLastOrder(),
+                supplier.getPaymentStatus(),
+                supplier.getDebt());
+    }
 }
