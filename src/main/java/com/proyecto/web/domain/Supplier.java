@@ -9,7 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -22,7 +23,7 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String supplierName;
-    private Date dateLastOrder;
+    private LocalDate dateLastOrder;
     private SupplierStatus paymentStatus;
     private String debt;
     private Boolean state;

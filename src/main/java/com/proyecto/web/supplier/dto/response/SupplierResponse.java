@@ -2,13 +2,13 @@ package com.proyecto.web.supplier.dto.response;
 
 import com.proyecto.web.domain.SupplierStatus;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public record SupplierResponse(
 
         Long id,
         String supplierName,
-        Date dateLastOrder,
+        LocalDate dateLastOrder,
         SupplierStatus paymentStatus,
         String debt
 ) {
