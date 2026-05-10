@@ -1,6 +1,5 @@
 package com.proyecto.web.product.controller;
 
-import com.proyecto.web.domain.Product;
 import com.proyecto.web.product.dto.request.ProductCreateRequest;
 import com.proyecto.web.product.dto.request.ProductUpdateRequest;
 import com.proyecto.web.product.dto.response.ProductResponse;
@@ -10,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -34,6 +34,14 @@ public class ProductController {
 
         List<ProductResponse> response = productService.getAllProducts();
         return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductResponse>> search(@RequestParam String term) {
+        if (term == null || term.isBlank()) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+        return ResponseEntity.ok(productService.searchProducts(term));
     }
 
     @PostMapping
