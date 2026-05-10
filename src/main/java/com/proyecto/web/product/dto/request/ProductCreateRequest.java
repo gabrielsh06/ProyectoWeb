@@ -1,5 +1,6 @@
 package com.proyecto.web.product.dto.request;
 
+import com.proyecto.web.domain.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,13 +12,18 @@ public record ProductCreateRequest(
         String name,
         @NotBlank(message = "La categoria no puede estar en blanco")
         String category,
-        @NotBlank(message = "El precio de compra no puede estar en blanco")
         BigDecimal purchasePrice,
-        @NotBlank(message = "El precio de venta no puede estar en blanco")
         BigDecimal salePrice,
-        @NotBlank(message = "El stock no puede estar en blanco")
         Integer stock,
-        @NotBlank(message = "EL proveedor no puede estar en blanco")
         Long supplierId
 ) {
+        public Product toEntity() {
+                Product product = new Product();
+                product.setName(name);
+                product.setCategory(category);
+                product.setPurchasePrice(purchasePrice);
+                product.setSalePrice(salePrice);
+                product.setStock(stock);
+                return product;
+        }
 }
