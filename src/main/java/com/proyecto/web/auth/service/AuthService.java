@@ -3,6 +3,7 @@ package com.proyecto.web.auth.service;
 import com.proyecto.web.auth.dto.request.LoginRequest;
 import com.proyecto.web.auth.dto.response.LoginResponse;
 import com.proyecto.web.auth.repository.AuthRepository;
+import com.proyecto.web.domain.User;
 import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class AuthService {
 
     public LoginResponse login(LoginRequest loginRequest) {
         return authRepository.findByUsernameAndPassword(loginRequest.username(), loginRequest.password())
+                .filter(User::getState)
                 .map(LoginResponse::new)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuario o contraseña incorrectos"));
